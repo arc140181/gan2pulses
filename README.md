@@ -1,4 +1,4 @@
-# gan
+# gan2pulses
 Generative Adversarial Networks (GAN) to create pulses from scintillators.
 
 List of files:
