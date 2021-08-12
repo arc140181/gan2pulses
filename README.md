@@ -1,6 +1,11 @@
 # gan
-Generative Adversarial Networks (GAN) to create scintillator pulses
+Generative Adversarial Networks (GAN) to create pulses from scintillators.
 
-- *ganpulses.py*. Código principal que hay que ejecutar.
-- *source1.mat*. Fichero Matlab con los pulsos en crudo del centelleador.
-- *distances.py*. Funciones de utillería relacionado con el cálculo de distancias. No todas se utilizan.
+List of files:
+- *ganpulses.py*. Main code to execute.
+- *source1.mat*. Matlab file with the scintillator raw pulses.
+- *distances.py*. Utility functions related to the distances. Not all of them are used for the main code.
+
+This code has been tested using 'Spyder 5'.
+The choice of Cs-137 or Na-22 is made by uncommenting the code indicated in it.
+Note that most of the code has to do with the measurement of results rather than with the GAN itself.
