@@ -3,12 +3,15 @@ import numpy as np
 from scipy import signal
 
 
-def correlation(h1, h2):
-    nh1 = np.sum(h1)/np.max(h1)
-    nh2 = np.sum(h2)/np.max(h2)
-    nh12 = np.sum(h1*h2)
+def correlation_distance(h1, h2):
+    mh1 = np.mean(h1)
+    mh2 = np.mean(h2)
     
-    return nh12/(nh1 * nh2)
+    nh1sq = np.sum((h1 - mh1)**2)
+    nh2sq = np.sum((h2 - mh2)**2)
+    nh12 = np.sum((h1 - mh1)*(h2 - mh2))
+    
+    return nh12/np.sqrt(nh1sq * nh2sq)
     
 def chisquared_distance(h1, h2):
     distance = 0
@@ -73,10 +76,12 @@ def mindistance(p1, gp2, distfunc):
     return np.min(dist)
 
 def meanmindistance(gp1, gp2, distfunc):
-    d = np.zeros(gp1.shape[0])
-    for i in range(0, gp1.shape[0]):
-        d[i] = distfunc(gp1[i]/np.max(gp1[i]), gp2[i]/np.max(gp2[i]))
-        
+    if gp1.shape[0] > 0:
+        d = np.zeros(gp1.shape[0])
+        for i in range(0, gp1.shape[0]):
+            d[i] = distfunc(gp1[i]/np.max(gp1[i]), gp2[i]/np.max(gp2[i]))
+    else:
+        d = 0   
     return np.mean(d), np.var(d)
 
 
